@@ -86,7 +86,7 @@ if(isset($_FILES["photo_box"]) and $_FILES["photo_box"]["name"]!=''){
 		}
 		
 		// refresh page
-		header("Location: ?message=Uploaded photo: ".$category_title."/".$photo_name.".jpg&message_type=success");
+		header("Location: ?message=Photo téléversée avec succés: ".$category_title."/".$photo_name.".jpg&message_type=success");
 		exit;
 		
 	} else {
@@ -114,7 +114,7 @@ function selected_photo_file(){
 	if(document.getElementById('photo_box').value != ''){
 		file_extension = document.getElementById('photo_box').value.split('.').pop().toLowerCase();
 		if(file_extension != 'jpg' && file_extension != 'jpeg' && file_extension != 'gif' && file_extension != 'png' && file_extension != 'bmp'){
-			alert("Sorry, "+file_extension+" files cannot be uploaded, accepted formats are: jpg, gif or png");
+			alert("Désolé, les fichers "+file_extension+" ne peuvent pas être téléverser, les formats acceptés sont: jpg, gif ou png");
 			return false;
 		} else {
 			document.getElementById('photo_form').style.display = 'none';
@@ -273,10 +273,10 @@ function center_thumbnails_container(){
 
 <h1 style="text-transform:capitalize;"><?php echo htmlentities($category_display_title, ENT_QUOTES, "UTF-8");?></h1>
 
-<p class="breadcrumb"><a href="/">home</a> &gt; <a href="<?php echo $gallery_url;?>">gallery</a> &gt; <?php echo htmlentities($category_display_title , ENT_QUOTES, "UTF-8");?></p>
+<p class="breadcrumb"><a href="/">Accueil</a> &gt; <a href="<?php echo $gallery_url;?>">Galerie</a> &gt; <?php echo htmlentities($category_display_title , ENT_QUOTES, "UTF-8");?></p>
 
 <?php if(count($categories_array[$category_title])<=0){?>
-<p>There are no photos under <strong><?php echo htmlentities($category_display_title , ENT_QUOTES, "UTF-8");?></strong>.</p>
+<p>Il n'y a pas de photos dans la galerie <strong><?php echo htmlentities($category_display_title , ENT_QUOTES, "UTF-8");?></strong>.</p>
 <?php } ?>
 
 <!-- Give public access for photo upload -->
@@ -292,17 +292,17 @@ function center_thumbnails_container(){
     
     </form>
     
-    <span id="loading_info_div" style="background-image:url('<?php echo $gallery_url;?>/layout/loading_20x20.gif'); background-repeat:no-repeat; padding-left:24px; padding-top:3px; padding-bottom:2px; margin-top:10px; color:#EA0000; display:none;">Please wait, photo is uploading</span>
+    <span id="loading_info_div" style="background-image:url('<?php echo $gallery_url;?>/layout/loading_20x20.gif'); background-repeat:no-repeat; padding-left:24px; padding-top:3px; padding-bottom:2px; margin-top:10px; color:#EA0000; display:none;">Merci de patienter, téléversement de la photo en cours...</span>
     
     <!--
     <a href="<?php echo $gallery_url;?>/upload?category_title=<?php echo urlencode($category_title);?>" class="liquid_button">Upload photos</a>
 	-->
     
-    <a id="photo_upload_button" href="JavaScript:void(0);" onmouseup="document.getElementById('photo_form').style.display=''; document.getElementById('photo_upload_button').style.display='none';" class="liquid_button" style="padding-left:10px; padding-right:10px; margin-right:5px;">Upload photos</a>
+    <a id="photo_upload_button" href="JavaScript:void(0);" onmouseup="document.getElementById('photo_form').style.display=''; document.getElementById('photo_upload_button').style.display='none';" class="liquid_button" style="padding-left:10px; padding-right:10px; margin-right:5px;">Téléverser une photo</a>
 
 <?php if($is_admin){ // If admin for modification ?>
 
-    <a id="photos_edit_button" href="<?php echo $gallery_url;?>/<?php echo rawurlencode($category_title);?>/edit-photos" class="liquid_button" style="padding-left:10px; padding-right:10px;">Edit photos</a>
+    <a id="photos_edit_button" href="<?php echo $gallery_url;?>/<?php echo rawurlencode($category_title);?>/edit-photos" class="liquid_button" style="padding-left:10px; padding-right:10px;">Administrer les photos</a>
 
 <?php } // if is admin ?>
 

@@ -7,12 +7,12 @@ include("system_header.php");
 ?>
 <?php include("header.php");?>
 
-<h1>Photo Gallery</h1>
+<h1>Galerie photo</h1>
 
-<p class="breadcrumb"><a href="/">home</a> &gt; gallery</p>
+<p class="breadcrumb"><a href="/">Accueil</a> &gt; Galerie</p>
 
 <?php if(count($categories_array)<=0){?>
-<p>There are no photo categories, create one or more categories before uploading photos</p>
+<p>Il n'y a pas encore de catégories, créez une catégorie pour téléverser des photos.</p>
 <?php } ?>
 
 
