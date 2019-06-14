@@ -27,7 +27,7 @@ $working_directory = "files/".$category_title;
 
 
 // test uploads for size and format
-if($is_admin and isset($_FILES["photo_box"]) and $_FILES["photo_box"]["name"]!=''){
+if(isset($_FILES["photo_box"]) and $_FILES["photo_box"]["name"]!=''){
 		
 	if(!in_array($_FILES["photo_box"]["type"],$acceptable_file_types)){
 		$upload_errors .= "Photo should be jpg, gif or png; ";
@@ -279,8 +279,7 @@ function center_thumbnails_container(){
 <p>There are no photos under <strong><?php echo htmlentities($category_display_title , ENT_QUOTES, "UTF-8");?></strong>.</p>
 <?php } ?>
 
-
-<?php if($is_admin){?>
+<!-- Give public access for photo upload -->
 
     <form name="photo_form" id="photo_form" enctype="multipart/form-data" method="post" action="" style="display:none; border:1px solid #CCC; padding:10px; background-color:#F5F5F5; margin-bottom:10px;">
     
@@ -300,10 +299,11 @@ function center_thumbnails_container(){
 	-->
     
     <a id="photo_upload_button" href="JavaScript:void(0);" onmouseup="document.getElementById('photo_form').style.display=''; document.getElementById('photo_upload_button').style.display='none';" class="liquid_button" style="padding-left:10px; padding-right:10px; margin-right:5px;">Upload photos</a>
-    
+
+<?php if($is_admin){ // If admin for modification ?>
+
     <a id="photos_edit_button" href="<?php echo $gallery_url;?>/<?php echo rawurlencode($category_title);?>/edit-photos" class="liquid_button" style="padding-left:10px; padding-right:10px;">Edit photos</a>
-    
-    
+
 <?php } // if is admin ?>
 
 
