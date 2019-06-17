@@ -114,9 +114,9 @@ function confirm_delete_photo(form_id){
 --></script>
 
 
-<h1>Edit photos in <?php echo htmlentities($category_display_title , ENT_QUOTES, "UTF-8");?></h1>
+<h1>Edition des photos dans <?php echo htmlentities($category_display_title , ENT_QUOTES, "UTF-8");?></h1>
 
-<p class="breadcrumb"><a href="/">home</a> &gt; <a href="<?php echo $gallery_url;?>">gallery</a> &gt; <a href="<?php echo $gallery_url;?>/<?php echo rawurlencode($category_title);?>"><?php echo htmlentities($category_display_title , ENT_QUOTES, "UTF-8");?></a> &gt; edit photos</p>
+<p class="breadcrumb"><a href="/">Accueil</a> &gt; <a href="<?php echo $gallery_url;?>">Galerie</a> &gt; <a href="<?php echo $gallery_url;?>/<?php echo rawurlencode($category_title);?>"><?php echo htmlentities($category_display_title , ENT_QUOTES, "UTF-8");?></a> &gt; Editions des photos</p>
 
 
 
@@ -129,9 +129,9 @@ function confirm_delete_photo(form_id){
 
 <?php if(count($categories_array[$category_title])>0){?>
 
-<p>On this page you can edit the title and category of each photo.</p>
+<p>Vous pouvez éditer le nom et la catégorie de chaque photos. Il peut être nécessaire de relancer le script pour réactualiser les vignettes.</p>
 
-<p>Type a new photo name and press Enter or click &quot;Submit&quot;.</p>
+<p>Modifier le nom d'une photo puis pressez "Entrée" ou &quot;Sauvegarder&quot;.</p>
 
     <?php $photo_counter = 0;?>
 	<?php foreach($categories_array[$category_title] as $photo_file){ ?>
@@ -155,7 +155,7 @@ function confirm_delete_photo(form_id){
             
             <br />
             
-            <select name="category_box" id="category_box_<?php echo $photo_counter;?>" style="margin-top:10px; min-width:300px; padding:2px; height:24px; margin-bottom:10px;" onchange="change_edit_photo_form(<?php echo $photo_counter;?>);">
+            <select name="category_box" id="category_box_<?php echo $photo_counter;?>" style="margin-top:10px; min-width:300px; margin-bottom:10px;" onchange="change_edit_photo_form(<?php echo $photo_counter;?>);">
             	<?php foreach($categories_array as $loop_category_title=>$loop_category_images){?>
                 <option value="<?php echo htmlentities($loop_category_title, ENT_QUOTES, "UTF-8");?>" <?php if($loop_category_title==$category_title){?> selected="selected" style="background-color:#DDEEFF;" <?php } ?> ><?php echo htmlentities($loop_category_title, ENT_QUOTES, "UTF-8");?></option>
                 <?php } ?>
@@ -163,7 +163,7 @@ function confirm_delete_photo(form_id){
             
 			<br />
 			
-            <input type="submit" name="Submit" id="button_<?php echo $photo_counter;?>" value="Save" style="float:left; margin-right:10px; display:none;" class="button_110" />
+            <input type="submit" name="Submit" id="button_<?php echo $photo_counter;?>" value="Enregistrer" style="float:left; margin-right:10px; display:none;" class="button_110" />
             
             <span id="form_info_div_<?php echo $photo_counter;?>" style="float:left;"></span>
             

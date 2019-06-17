@@ -78,7 +78,7 @@ if($_GET['original_category_box']!=$_GET['category_box'] or $_GET['original_titl
 	// echo '<span class="photo_edit_confirmation"><strong>Data saved</strong></span>';
 	
 	$return_data_array['status'] = "ok";
-	$return_data_array['status_message'] = "Data saved";
+	$return_data_array['status_message'] = "Sauvegarde faite";
 	$return_data_array['form_id'] = $_GET['form_id'];
 	// return the new title, becuase we removed special chars, 
 	// it might be different than what was initially sent to this script

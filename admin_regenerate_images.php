@@ -53,11 +53,11 @@ $regenerate_thumbnails_log = trim($regenerate_thumbnails_log);
 
 ?>
 <?php include("header.php");?>
-<h1>Regenerate tumbnails</h1>
-<p class="breadcrumb"><a href="/">home</a> &gt; <a href="<?php echo $gallery_url;?>">gallery</a> &gt; <a href="<?php echo $gallery_url;?>/admin">admin</a> &gt; regenerate thumbnails</p>
+<h1>Regénérer les vignettes</h1>
+<p class="breadcrumb"><a href="/">Accueil</a> &gt; <a href="<?php echo $gallery_url;?>">Galerie</a> &gt; <a href="<?php echo $gallery_url;?>/admin">Administration</a> &gt; Regénérer les vignettes</p>
 
-<h2>Log</h2>
+<h2>Journal</h2>
 <p><?php echo nl2br(htmlentities($regenerate_thumbnails_log, ENT_QUOTES, "UTF-8"));?></p>
-<p style="color:#EA0000;">Generated thumbnails and display images for <?php echo $total_files_generated;?> images.</p>
+<p style="color:#EA0000;">Génération des vignettes et de l'affichage pour <?php echo $total_files_generated;?> image(s).</p>
 
 <?php include("footer.php");?>
