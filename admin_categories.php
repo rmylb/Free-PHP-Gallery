@@ -26,7 +26,7 @@ if(isset($_GET['category_to_delete']) and $_GET['category_to_delete']!='' and $_
 ?>
 <?php include("header.php");?>
 <h1>Administrer les catégories</h1>
-<p class="breadcrumb"><a href="/">Accueil</a> &gt; <a href="<?php echo $gallery_url;?>">Galerie</a> &gt; <a href="<?php echo $gallery_url;?>/admin">Administration</a> &gt; Catégories</p>
+<p class="breadcrumb"><a href="<?php echo $home_url;?>">Accueil</a> &gt; <a href="<?php echo $gallery_url;?>">Galerie</a> &gt; <a href="<?php echo $gallery_url;?>/admin">Administration</a> &gt; Catégories</p>
 
 <?php if(count($categories_array)<=0){?>
 <p>Il n'y a pas encore de catégories créées, créez-en une pour pouvoir téléverser des photos.</p>

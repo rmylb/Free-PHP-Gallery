@@ -9,13 +9,18 @@ include("system_header.php");
 
 <h1>Galerie photo</h1>
 
-<p class="breadcrumb"><a href="/">Accueil</a> &gt; <a href="<?php echo $gallery_url;?>"> Galerie </a></p>
+<p class="breadcrumb"><a href="<?php echo $home_url;?>">Accueil</a> &gt; <a href="<?php echo $gallery_url;?>"> Galerie </a></p>
 
 <!-- Add gallery filter -->
 <form action="<?php echo $gallery_url;?>">
     <p class="breadcrumb" style="text-align: right; padding-right: 30px"> Rechercher une galerie <input type="text" id="filter" name="filter"><input type="submit" value="Filtrer"></p>
 <!-- End gallery filter -->
 </form>
+
+<?php
+    if($welcome_message) {
+        echo $welcome_message;
+} ?>
 
 <?php if(count($categories_array)<=0){?>
 <p>Il n'y a pas encore de catégories, créez une catégorie pour téléverser des photos.</p>

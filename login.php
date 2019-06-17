@@ -38,7 +38,7 @@ if(isset($_POST['user_box']) and $_POST['user_box']!='' and isset($_POST['passwo
 <h1>Connexion</h1>
 
 
-<p class="breadcrumb"><a href="/">Accueil</a> &gt; <a href="<?php echo $gallery_url;?>">Galerie</a> &gt; Connexion</p>
+<p class="breadcrumb"><a href="<?php echo $home_url;?>">Accueil</a> &gt; <a href="<?php echo $gallery_url;?>">Galerie</a> &gt; Connexion</p>
 
 
 

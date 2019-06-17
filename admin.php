@@ -8,7 +8,7 @@ admin_only();
 ?>
 <?php include("header.php");?>
 <h1>Admin </h1>
-<p class="breadcrumb"><a href="/">Accueil</a> &gt; <a href="<?php echo $gallery_url;?>">Galerie</a> &gt; Administration</p>
+<p class="breadcrumb"><a href="<?php echo $home_url;?>">Accueil</a> &gt; <a href="<?php echo $gallery_url;?>">Galerie</a> &gt; Administration</p>
 
 <p>
 <strong><a href="<?php echo $gallery_url;?>/admin-categories">Administrer les catégories (<?php echo count($categories_array);?>)</a></strong><br />

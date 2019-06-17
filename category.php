@@ -273,7 +273,7 @@ function center_thumbnails_container(){
 
 <h1 style="text-transform:capitalize;"><?php echo htmlentities($category_display_title, ENT_QUOTES, "UTF-8");?></h1>
 
-<p class="breadcrumb"><a href="/">Accueil</a> &gt; <a href="<?php echo $gallery_url;?>">Galerie</a> &gt; <?php echo htmlentities($category_display_title , ENT_QUOTES, "UTF-8");?></p>
+<p class="breadcrumb"><a href="<?php echo $home_url;?>">Accueil</a> &gt; <a href="<?php echo $gallery_url;?>">Galerie</a> &gt; <?php echo htmlentities($category_display_title , ENT_QUOTES, "UTF-8");?></p>
 
 <?php if(count($categories_array[$category_title])<=0){?>
 <p>Il n'y a pas de photos dans la galerie <strong><?php echo htmlentities($category_display_title , ENT_QUOTES, "UTF-8");?></strong>.</p>
