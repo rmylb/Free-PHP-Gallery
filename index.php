@@ -49,7 +49,7 @@ include("system_header.php");
                 <img src="<?php echo $category_thumbnail;?>" width="<?php echo $settings_thumbnail_width;?>" height="<?php echo $settings_thumbnail_height;?>" alt="<?php echo htmlentities(ucwords(str_replace('-', ' ', $photo_category)), ENT_QUOTES, "UTF-8");?>" />
                 </a>
                 <a class="category_thumbnail_title" href="<?php echo $category_url;?>" title="<?php echo htmlentities(ucwords(str_replace('-', ' ', $photo_category)), ENT_QUOTES, "UTF-8");?>">
-                <?php echo htmlentities(str_replace('-',' ', truncate_by_letters($photo_category, 16, '..')), ENT_QUOTES, "UTF-8");?> (<?php echo count($photos_array);?>)
+                <?php echo htmlentities(str_replace('-',' ', truncate_by_letters($photo_category, $settings_thumbnail_width / 6, '..')), ENT_QUOTES, "UTF-8");?> (<?php echo count($photos_array);?>)
                 </a>
                 </span>
 
@@ -60,7 +60,7 @@ include("system_header.php");
                 <img src="<?php echo $category_thumbnail;?>" width="<?php echo $settings_thumbnail_width;?>" height="<?php echo $settings_thumbnail_height;?>" alt="<?php echo htmlentities(ucwords(str_replace('-', ' ', $photo_category)), ENT_QUOTES, "UTF-8");?>" />
                 </a>
                 <a class="category_thumbnail_title" href="<?php echo $category_url;?>" title="<?php echo htmlentities(ucwords(str_replace('-', ' ', $photo_category)), ENT_QUOTES, "UTF-8");?>">
-                <?php echo htmlentities(str_replace('-',' ', truncate_by_letters($photo_category, 16, '..')), ENT_QUOTES, "UTF-8");?> (<?php echo count($photos_array);?>)
+                <?php echo htmlentities(str_replace('-',' ', truncate_by_letters($photo_category, $settings_thumbnail_width / 6, '..')), ENT_QUOTES, "UTF-8");?> (<?php echo count($photos_array);?>)
                 </a>
                 </span>
 
