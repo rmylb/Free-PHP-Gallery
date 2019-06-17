@@ -6,6 +6,9 @@ $admin_password = "1234";
 $settings_page_title = "Photo Gallery";
 $settings_page_description = "Photo Gallery";
 
+$public_upload = true; // Set to true to allow public upload
+$photos_visibility = true; // Set to true to allow photo display
+
 // if you will change thumbnail width or height, then login to admin area and re-generate thumbnails
 $settings_thumbnail_width = '160';
 $settings_thumbnail_height = '100';

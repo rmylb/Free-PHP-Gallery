@@ -277,51 +277,48 @@ function center_thumbnails_container(){
 
 <?php if(count($categories_array[$category_title])<=0){?>
 <p>Il n'y a pas de photos dans la galerie <strong><?php echo htmlentities($category_display_title , ENT_QUOTES, "UTF-8");?></strong>.</p>
-<?php } ?>
+<?php } else { echo "<p>Actuellement, il y a " . count($categories_array[$category_title]) . " photo(s) dans la galerie <strong>" . htmlentities($category_display_title , ENT_QUOTES, "UTF-8") . "</strong>.</p>" ; } ?>
 
-<!-- Give public access for photo upload -->
-
+<?php if($is_admin || $public_upload){ // If admin or set for public upload ?>
     <form name="photo_form" id="photo_form" enctype="multipart/form-data" method="post" action="" style="display:none; border:1px solid #CCC; padding:10px; background-color:#F5F5F5; margin-bottom:10px;">
-    
+
         <span id="photo_box_span">
         <input type="file" name="photo_box" id="photo_box" accept="image/*" onChange="selected_photo_file();" style="border:none;"/>
         </span>
-        
-       
+
+
         <img src="<?php echo $gallery_url;?>/layout/delete_16x16.gif" width="16" height="16" style="float:right; cursor:pointer;" onmouseup="document.getElementById('photo_form').style.display='none'; document.getElementById('photo_upload_button').style.display='';" alt="close upload form" title="close upload form" />
-    
+
     </form>
-    
+
     <span id="loading_info_div" style="background-image:url('<?php echo $gallery_url;?>/layout/loading_20x20.gif'); background-repeat:no-repeat; padding-left:24px; padding-top:3px; padding-bottom:2px; margin-top:10px; color:#EA0000; display:none;">Merci de patienter, téléversement de la photo en cours...</span>
-    
-    <!--
-    <a href="<?php echo $gallery_url;?>/upload?category_title=<?php echo urlencode($category_title);?>" class="liquid_button">Upload photos</a>
-	-->
-    
+
     <a id="photo_upload_button" href="JavaScript:void(0);" onmouseup="document.getElementById('photo_form').style.display=''; document.getElementById('photo_upload_button').style.display='none';" class="liquid_button" style="padding-left:10px; padding-right:10px; margin-right:5px;">Téléverser une photo</a>
+<?php } ?>
 
 <?php if($is_admin){ // If admin for modification ?>
-
     <a id="photos_edit_button" href="<?php echo $gallery_url;?>/<?php echo rawurlencode($category_title);?>/edit-photos" class="liquid_button" style="padding-left:10px; padding-right:10px;">Administrer les photos</a>
-
 <?php } // if is admin ?>
 
 
+<?php if($is_admin || $photos_visibility) {
+    if (count($categories_array[$category_title]) > 0) {
+        ?>
+        <div style="display:block; margin-top:10px;">
+            <?php $photo_counter = 0; ?>
+            <?php foreach ($categories_array[$category_title] as $photo_file) { ?>
+                <img src="<?php echo $gallery_url . "/" . rawurlencode($category_title) . "/" . rawurlencode($photo_file) . "_thumb.jpg"; ?>"
+                     style="padding:5px; border:1px solid #CCC; margin-top:5px; margin-right:5px; cursor:pointer;"
+                     onclick="switch_large_image(<?php echo $photo_counter; ?>);"
+                     alt="<?php echo htmlentities(ucwords(str_replace('-', ' ', $photo_file))); ?>"
+                     title="<?php echo htmlentities($photo_file, ENT_QUOTES, "UTF-8"); ?>"/>
+                <?php $photo_counter++; ?>
+            <?php } ?>
+        </div>
+    <?php }
+} // if there are photos ?>
 
-<?php if(count($categories_array[$category_title])>0){?>
-	<div style="display:block; margin-top:10px;">
-    <?php $photo_counter = 0;?>
-	<?php foreach($categories_array[$category_title] as $photo_file){ ?>
-    <img src="<?php echo $gallery_url."/".rawurlencode($category_title)."/".rawurlencode($photo_file)."_thumb.jpg" ;?>" style="padding:5px; border:1px solid #CCC; margin-top:5px; margin-right:5px; cursor:pointer;" onclick="switch_large_image(<?php echo $photo_counter;?>);" alt="<?php echo htmlentities(ucwords(str_replace('-', ' ', $photo_file)));?>" title="<?php echo htmlentities($photo_file, ENT_QUOTES, "UTF-8");?>" />
-    <?php $photo_counter++;?>
-    <?php } ?>
-    </div>
-<?php } // if there are photos ?>
-
-
-
-
-
+<?php if($is_admin || $photos_visibility) { ?>
 <?php // the top: should be minus half of the thumbs height; minus half the padding around thumbs ?>
 <table id="large_gallery" width="100%" style="height:100%; position:fixed; top:-<?php echo round($settings_thumbnail_height/4)+10;?>px; left:0px; display:none; text-align:center; margin:auto;" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -366,6 +363,8 @@ function center_thumbnails_container(){
 <script type="text/javascript"><!--
 window.onresize = function(){ center_thumbnails_container();}
 --></script>
+
+<?php } ?>
 
 
 <?php include("footer.php");?>

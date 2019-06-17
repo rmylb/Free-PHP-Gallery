@@ -23,8 +23,7 @@ include("system_header.php");
 
 
 <?php if(count($categories_array)>0){?>
-	
-    	
+
 <div>
 
 	<?php foreach($categories_array as $photo_category=>$photos_array){?>
@@ -32,7 +31,7 @@ include("system_header.php");
     	<?php 
 		$category_thumbnail = $gallery_url."/layout/pixel.gif";
 
-		if(file_exists('files/'.$photo_category.'/thumbnail.jpg')){
+		if(file_exists('files/'.$photo_category.'/thumbnail.jpg') && ($is_admin || $photos_visibility) ){ // Hide thumbnail if visibility is false
 			$category_thumbnail = $gallery_url.'/'.rawurlencode($photo_category).'.jpg';
 		}
 
@@ -41,7 +40,7 @@ include("system_header.php");
             if($_GET['filter'] && preg_match("/{$_GET['filter']}/i", $photo_category)){?>
 
                 <span class="category_thumbnail_span" style="width:<?php echo $settings_thumbnail_width;?>px; height:<?php echo $settings_thumbnail_height+20;?>px;">
-                <a class="category_thumbnail_image" href="<?php echo $category_url;?>" style="width:<?php echo $settings_thumbnail_width;?>px; height:<?php echo $settings_thumbnail_height;?>px; background-image:url('<?php echo $gallery_url;?>/layout/lens_48x48.png');" title="<?php echo htmlentities(ucwords(str_replace('-', ' ', $photo_category)), ENT_QUOTES, "UTF-8");?>">
+                <a class="category_thumbnail_image" href="<?php echo $category_url;?>" style="width:<?php echo $settings_thumbnail_width;?>px; height:<?php echo $settings_thumbnail_height;?>px; background-image:url('<?php echo $gallery_url;?>/layout/default.png');" title="<?php echo htmlentities(ucwords(str_replace('-', ' ', $photo_category)), ENT_QUOTES, "UTF-8");?>">
                 <img src="<?php echo $category_thumbnail;?>" width="<?php echo $settings_thumbnail_width;?>" height="<?php echo $settings_thumbnail_height;?>" alt="<?php echo htmlentities(ucwords(str_replace('-', ' ', $photo_category)), ENT_QUOTES, "UTF-8");?>" />
                 </a>
                 <a class="category_thumbnail_title" href="<?php echo $category_url;?>" title="<?php echo htmlentities(ucwords(str_replace('-', ' ', $photo_category)), ENT_QUOTES, "UTF-8");?>">
@@ -52,7 +51,7 @@ include("system_header.php");
             <?php } elseif(!isset($_GET['filter']))  { ?>
 
                 <span class="category_thumbnail_span" style="width:<?php echo $settings_thumbnail_width;?>px; height:<?php echo $settings_thumbnail_height+20;?>px;">
-                <a class="category_thumbnail_image" href="<?php echo $category_url;?>" style="width:<?php echo $settings_thumbnail_width;?>px; height:<?php echo $settings_thumbnail_height;?>px; background-image:url('<?php echo $gallery_url;?>/layout/lens_48x48.png');" title="<?php echo htmlentities(ucwords(str_replace('-', ' ', $photo_category)), ENT_QUOTES, "UTF-8");?>">
+                <a class="category_thumbnail_image" href="<?php echo $category_url;?>" style="width:<?php echo $settings_thumbnail_width;?>px; height:<?php echo $settings_thumbnail_height;?>px; background-image:url('<?php echo $gallery_url;?>/layout/default.png');" title="<?php echo htmlentities(ucwords(str_replace('-', ' ', $photo_category)), ENT_QUOTES, "UTF-8");?>">
                 <img src="<?php echo $category_thumbnail;?>" width="<?php echo $settings_thumbnail_width;?>" height="<?php echo $settings_thumbnail_height;?>" alt="<?php echo htmlentities(ucwords(str_replace('-', ' ', $photo_category)), ENT_QUOTES, "UTF-8");?>" />
                 </a>
                 <a class="category_thumbnail_title" href="<?php echo $category_url;?>" title="<?php echo htmlentities(ucwords(str_replace('-', ' ', $photo_category)), ENT_QUOTES, "UTF-8");?>">
