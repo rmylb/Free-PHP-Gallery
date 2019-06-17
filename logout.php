@@ -7,7 +7,7 @@ $_SESSION['session_admin'] = '';
 $_SESSION['session_return_url'] = '';
 $_SESSION['session_secret'] = '';
 		
-header("Location: ".$gallery_url."?message=you are logged out&message_type=success");
+header("Location: ".$gallery_url."?message=Vous êtes déconnecté&message_type=success");
 exit;
 
 ?>

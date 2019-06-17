@@ -35,27 +35,27 @@ if(isset($_POST['user_box']) and $_POST['user_box']!='' and isset($_POST['passwo
 ?>
 <?php include("header.php");?>
 
-<h1>Login page</h1>
+<h1>Connexion</h1>
 
 
-<p class="breadcrumb"><a href="/">home</a> &gt; <a href="<?php echo $gallery_url;?>">gallery</a> &gt; login</p>
+<p class="breadcrumb"><a href="/">Accueil</a> &gt; <a href="<?php echo $gallery_url;?>">Galerie</a> &gt; Connexion</p>
 
 
 
 <form id="form1" name="form1" method="post" action="" style="margin-bottom:0px;">
 
-	<label for="user_box">user</label><br />
+	<label for="user_box">Utilisateur</label><br />
 	<input type="text" name="user_box" id="user_box" style="width:150px;" />
 
 	<br />
 	<br />
     
-	<label for="password_box">password</label><br />
+	<label for="password_box">Mot de passe</label><br />
 	<input type="password" name="password_box" id="password_box" style="width:150px;" />
  
 	<br />
 	<br />
-	<input type="submit" name="button" id="button" value="Login" class="button_110" />
+	<input type="submit" name="button" id="button" value="Connexion" class="button_110" />
 </form>
 
 <script type="text/javascript">

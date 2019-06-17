@@ -6,7 +6,7 @@ if(!function_exists("admin_only")){
 		global $is_admin, $gallery_url;
 		if(!$is_admin){
 			$_SESSION['session_return_url'] = $_SERVER['REQUEST_URI'];
-			header("Location: ".$gallery_url."/login?message=you need to login to access that page&message_type=error");
+			header("Location: ".$gallery_url."/login?message=Vous devez être connecté pour accéder à cette page&message_type=error");
 			exit;
 		}
 	}
