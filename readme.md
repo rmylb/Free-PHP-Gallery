@@ -51,4 +51,7 @@ Solution: check permissions for the *files* folder
 3) Unable to access to admin page (or other pages)
 Solution: Verify the apache2 rewrite module is enable (and restart apache2)
 
+4) No category name below thumbnails
+Solution: Verify the php mbstring package is installed (and restart apache2)
+
 If you need any help contact us at http://www.adriantnt.com/contact/ or open an issue.
