@@ -29,7 +29,7 @@ No database is required for this script, the categories that you create are actu
   - Add a string variable to display an introduction on the main page (empty the string to bypass this feature)
   - You can switch between public read-only gallery or allow public upload
   - If you allow public upload, you can switch between public access to pictures or hide pictures for non-admin
-  - If you allow public upload, you can switch between anonymous upload or ask a contact email when a file is uploading
+  - If you allow public upload, you can switch between anonymous upload or ask a contact email when a file is uploading (each upload is logged with the email, filename and category). 
 
 # New in version 1.1
 - you can now use special characters in category names and photo names, if you notice problems please contact us
