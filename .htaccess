@@ -30,3 +30,5 @@ RewriteCond %{REQUEST_FILENAME} !-l
 
 RewriteRule ^([^/]+)/?$ category.php?cat_url_string=$1 [QSA]
 
+# Block email log access from web
+RewriteRule ^(contact\.csv) - [F,L,NC]

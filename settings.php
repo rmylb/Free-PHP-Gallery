@@ -19,6 +19,10 @@ $settings_photo_height = '650';
 $settings_secret = "iuai4334832987432@#&^%AWDAW";
 $settings_gallery_version = "1.0.2";
 
+// Log user email ?
+$ask_for_email = true; // Set true to ask email and store it in a file with the corresponding file name
+// $email_file_path = "/var/www/user.csv"; // CSV extension for better output
+
 $welcome_message = "This is a <strong>welcome message</strong> displayed on the top of the first page."; // Set to false to disable the welcome message
 $home_url = "/";
 

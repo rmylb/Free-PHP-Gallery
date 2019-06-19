@@ -35,8 +35,7 @@ if(isset($_FILES["photo_box"]) and $_FILES["photo_box"]["name"]!=''){
 	if($_FILES["photo_box"]["size"]/1024 > $max_photo_size){
 		$upload_errors .= "Photo is too large (".size_convert($_FILES["photo_box"]["size"])."), maximum size is ".($max_photo_size/1000)."MB; ";
 	}
-	
-	
+
 	// final will be a string like "landscape-with-mountain"
 	$photo_name = pathinfo($_FILES["photo_box"]["name"], PATHINFO_FILENAME);
 	$photo_name = strtolower($photo_name);
@@ -84,6 +83,16 @@ if(isset($_FILES["photo_box"]) and $_FILES["photo_box"]["name"]!=''){
 		if(!file_exists("files/".$category_title."/thumbnail.jpg")){
 			copy($working_directory."/".$photo_name."_thumb.jpg", "files/".$category_title."/thumbnail.jpg");
 		}
+
+        // Email for contact
+        if($ask_for_email) {
+            $photo_email = $_POST["email"];
+            $email_file_path = "contact.csv";
+            $fh = fopen($email_file_path, (file_exists($email_file_path)) ? 'a' : 'w');
+            fwrite($fh, "\"" . $photo_email . "\";\"" . $category_title . "\";\"" . $photo_name . "\"\n");
+            fclose($fh);
+            $source_code = file_get_contents($email_file_path);
+        }
 		
 		// refresh page
 		header("Location: ?message=Photo téléversée avec succés: ".$category_title."/".$photo_name.".jpg&message_type=success");
@@ -122,7 +131,6 @@ function selected_photo_file(){
 			document.getElementById('photo_form').submit();
 		}
 	}
-	
 }
 
 
@@ -283,6 +291,9 @@ function center_thumbnails_container(){
     <form name="photo_form" id="photo_form" enctype="multipart/form-data" method="post" action="" style="display:none; border:1px solid #CCC; padding:10px; background-color:#F5F5F5; margin-bottom:10px;">
 
         <span id="photo_box_span">
+            <?php if($ask_for_email) {?>
+                <p> Renseigner votre email afin que l'on vous recontacte si votre photo est sélectionnée <input type="email" id="email" name="email" placeholder="Votre adresse email"></p>
+            <?php } ?>
         <input type="file" name="photo_box" id="photo_box" accept="image/*" onChange="selected_photo_file();" style="border:none;"/>
         </span>
 
