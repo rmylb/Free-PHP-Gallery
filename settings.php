@@ -20,11 +20,13 @@ $settings_secret = "iuai4334832987432@#&^%AWDAW";
 $settings_gallery_version = "1.0.2";
 
 // Log user email ?
-$ask_for_email = true; // Set true to ask email and store it in a file with the corresponding file name
-// $email_file_path = "/var/www/user.csv"; // CSV extension for better output
+$ask_for_email = true; // Set to true to ask email and store it in a file with the corresponding file name
+$email_is_required = false; // Set to true to force the user to set the email before uploading photo
+$email_file_path = "contact.csv"; // Check the permissions for www-data on file and folder if you change location outside webroot
 
 $welcome_message = "This is a <strong>welcome message</strong> displayed on the top of the first page."; // Set to false to disable the welcome message
 $home_url = "/";
 
+$ask_upload_confirmation = true; // Set to true to add a button to submit (useful when $email_is_required is true !)
 
 ?>

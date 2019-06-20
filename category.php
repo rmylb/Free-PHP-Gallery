@@ -87,9 +87,8 @@ if(isset($_FILES["photo_box"]) and $_FILES["photo_box"]["name"]!=''){
         // Email for contact
         if($ask_for_email) {
             $photo_email = $_POST["email"];
-            $email_file_path = "contact.csv";
             $fh = fopen($email_file_path, (file_exists($email_file_path)) ? 'a' : 'w');
-            fwrite($fh, "\"" . $photo_email . "\";\"" . $category_title . "\";\"" . $photo_name . "\"\n");
+            fwrite($fh, "\"" . time() . "\";\"" . $photo_email . "\";\"" . $category_title . "\";\"" . $photo_name . "\"\n");
             fclose($fh);
             $source_code = file_get_contents($email_file_path);
         }
@@ -121,7 +120,14 @@ $page_description = ucwords($category_display_title)." | Photo Gallery";
 function selected_photo_file(){
 	
 	if(document.getElementById('photo_box').value != ''){
-		file_extension = document.getElementById('photo_box').value.split('.').pop().toLowerCase();
+		let file_extension = document.getElementById('photo_box').value.split('.').pop().toLowerCase();
+		let email = document.getElementById("email");
+		<?php if($email_is_required){?>
+            if (!email.checkValidity() || email.value == "") {
+                alert("Format de courriel invalide ou vide");
+                return false;
+            }
+        <?php } ?>
 		if(file_extension != 'jpg' && file_extension != 'jpeg' && file_extension != 'gif' && file_extension != 'png' && file_extension != 'bmp'){
 			alert("Désolé, les fichers "+file_extension+" ne peuvent pas être téléverser, les formats acceptés sont: jpg, gif ou png");
 			return false;
@@ -294,7 +300,14 @@ function center_thumbnails_container(){
             <?php if($ask_for_email) {?>
                 <p> Renseigner votre email afin que l'on vous recontacte si votre photo est sélectionnée <input type="email" id="email" name="email" placeholder="Votre adresse email"></p>
             <?php } ?>
-        <input type="file" name="photo_box" id="photo_box" accept="image/*" onChange="selected_photo_file();" style="border:none;"/>
+
+            <?php if($ask_upload_confirmation) { ?>
+        <input type="file" name="photo_box" id="photo_box" accept="image/*" style="border:none;"/>
+                <a onclick="selected_photo_file();" class="liquid_button" style="padding-left:10px; padding-right:10px;">Soumettre la photo</a>
+            <?php } else { ?>
+            <input type="file" name="photo_box" id="photo_box" accept="image/*" onChange="selected_photo_file();" style="border:none;"/>
+            <?php } ?>
+
         </span>
 
 
